@@ -1,0 +1,32 @@
+{
+  "name": "pxgamer/trello-php",
+  "type": "library",
+  "description": "A simple PHP wrapper for utilising the Trello api.",
+  "homepage": "https://github.com/PXgamer/trello-php",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "PXgamer",
+      "email": "owzie123@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/PXgamer/trello-php/issues"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/PXgamer/trello-php"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "ext-curl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "pxgamer\\Trello\\": "src/"
+    }
+  }
+}
