@@ -4,10 +4,10 @@ A simple PHP wrapper for utilising the [Trello](https://developers.trello.com) a
 
 ## Usage
 
-__Include the class:__
+#### Using Composer
 
-#### Using Composer  
-`composer require pxgamer/trello-php`  
+`composer require pxgamer/trello-php`
+
 ```php
 require 'vendor/autoload.php';
 use pxgamer\Trello;
@@ -15,7 +15,8 @@ use pxgamer\Trello;
 $trello = new Trello\Client('api_key', 'access_token');
 ```
 
-#### Including the file manually  
+#### Including the class manually
+
 ```php
 include 'src/Client.php';
 use pxgamer\Trello;
@@ -23,7 +24,7 @@ use pxgamer\Trello;
 $trello = new Trello\Client('api_key', 'access_token');
 ```
 
-## Functions
+## Methods
 
 _All functions return associative arrays._
 
