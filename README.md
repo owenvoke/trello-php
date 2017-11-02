@@ -11,14 +11,18 @@ __Include the class:__
 ```php
 <?php
 require 'vendor/autoload.php';
-$trello = new \pxgamer\trello('api_key', 'access_token');
+use pxgamer\Trello;
+
+$trello = new Trello\Client('api_key', 'access_token');
 ```
 
 #### Including the file manually  
 ```php
 <?php
 include 'src/Client.php';
-$trello = new \pxgamer\trello('api_key', 'access_token');
+use pxgamer\Trello;
+
+$trello = new Trello\Client('api_key', 'access_token');
 ```
 
 ## Functions
@@ -26,27 +30,22 @@ $trello = new \pxgamer\trello('api_key', 'access_token');
 _All functions return associative arrays._
 
 ```php
-<?php
 // Returns a PHP array of boards that a user is a member of
-getBoardsByUser($username);
+$trello->getBoardsByUser($username);
 ```
 ```php
-<?php
 // Returns an array of lists that are available on a board
-getListsFromBoard($board_id);
+$trello->getListsFromBoard($board_id);
 ```
 ```php
-<?php
 // Returns an array of cards that are in a list
-getCardsFromList($list_id);
+$trello->getCardsFromList($list_id);
 ```
 ```php
-<?php
 // Returns an array of data about a specific card
-getCard($card_id);
+$trello->getCard($card_id);
 ```
 ```php
-<?php
 // Adds a card (requires a list ID to be specified)
 // Example Content:
 $content = [
@@ -57,5 +56,5 @@ $content = [
     'due' => '2017-01-27'
 ];
 
-addCard($content);
+$trello->addCard($content);
 ```
