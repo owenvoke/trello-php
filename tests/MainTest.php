@@ -1,8 +1,9 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use pxgamer\Trello;
 
-class MainTest extends PHPUnit_Framework_TestCase
+class MainTest extends TestCase
 {
     public function testConnect()
     {

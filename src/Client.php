@@ -20,7 +20,7 @@ class Client
             $this->access_token = $access_token;
         }
         if (!$this->api_url) {
-            $this->api_url = self::BASE_URL.self::API_VERSION;
+            $this->api_url = self::BASE_URL . self::API_VERSION;
         }
     }
 
@@ -55,9 +55,13 @@ class Client
         curl_setopt_array(
             $cu,
             [
-                CURLOPT_URL => $this->api_url.$endpoint.((strpos($endpoint, '?') > -1) ? '&' : '?').'key='.$this->api_key.'&token='.$this->access_token,
-                CURLOPT_SSL_VERIFYHOST => 0,
-                CURLOPT_SSL_VERIFYPEER => 0,
+                CURLOPT_URL            => $this->api_url
+                                          . $endpoint
+                                          . ((strpos($endpoint, '?') > -1) ? '&' : '?')
+                                          . 'key='
+                                          . $this->api_key
+                                          . '&token='
+                                          . $this->access_token,
                 CURLOPT_RETURNTRANSFER => true,
             ]
         );
@@ -71,12 +75,16 @@ class Client
         curl_setopt_array(
             $cu,
             [
-                CURLOPT_URL => $this->api_url.$endpoint.((strpos($endpoint, '?') > -1) ? '&' : '?').'key='.$this->api_key.'&token='.$this->access_token,
-                CURLOPT_SSL_VERIFYHOST => 0,
-                CURLOPT_SSL_VERIFYPEER => 0,
+                CURLOPT_URL            => $this->api_url
+                                          . $endpoint
+                                          . ((strpos($endpoint, '?') > -1) ? '&' : '?')
+                                          . 'key='
+                                          . $this->api_key
+                                          . '&token='
+                                          . $this->access_token,
                 CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_POST => true,
-                CURLOPT_POSTFIELDS => $content,
+                CURLOPT_POST           => true,
+                CURLOPT_POSTFIELDS     => $content,
             ]
         );
 
