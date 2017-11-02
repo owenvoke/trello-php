@@ -9,7 +9,6 @@ __Include the class:__
 #### Using Composer  
 `composer require pxgamer/trello-php`  
 ```php
-<?php
 require 'vendor/autoload.php';
 use pxgamer\Trello;
 
@@ -18,7 +17,6 @@ $trello = new Trello\Client('api_key', 'access_token');
 
 #### Including the file manually  
 ```php
-<?php
 include 'src/Client.php';
 use pxgamer\Trello;
 
@@ -49,11 +47,11 @@ $trello->getCard($card_id);
 // Adds a card (requires a list ID to be specified)
 // Example Content:
 $content = [
-	'name' => 'Card Title',
-	'desc' => 'Card Description... La la la.',
+	'name'   => 'Card Title',
+	'desc'   => 'Card Description... La la la.',
 	'idList' => 'List Id',
-	'pos' => 'bottom',
-    'due' => '2017-01-27'
+	'pos'    => 'bottom',
+    'due'    => '2017-01-27',
 ];
 
 $trello->addCard($content);
