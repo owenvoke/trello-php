@@ -62,8 +62,6 @@ class Client
                                           . $this->api_key
                                           . '&token='
                                           . $this->access_token,
-                CURLOPT_SSL_VERIFYHOST => 0,
-                CURLOPT_SSL_VERIFYPEER => 0,
                 CURLOPT_RETURNTRANSFER => true,
             ]
         );
@@ -84,8 +82,6 @@ class Client
                                           . $this->api_key
                                           . '&token='
                                           . $this->access_token,
-                CURLOPT_SSL_VERIFYHOST => 0,
-                CURLOPT_SSL_VERIFYPEER => 0,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POST           => true,
                 CURLOPT_POSTFIELDS     => $content,
