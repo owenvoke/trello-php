@@ -57,10 +57,10 @@ $trello->getCard($card_id);
 // Adds a card (requires a list ID to be specified)
 // Example Content:
 $content = [
-	'name'   => 'Card Title',
-	'desc'   => 'Card Description... La la la.',
-	'idList' => 'List Id',
-	'pos'    => 'bottom',
+    'name'   => 'Card Title',
+    'desc'   => 'Card Description... La la la.',
+    'idList' => 'List Id',
+    'pos'    => 'bottom',
     'due'    => '2017-01-27',
 ];
 
