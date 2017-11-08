@@ -73,6 +73,8 @@ class MainTest extends TestCase
         ]);
 
         $this->assertInternalType('array', $card);
-        $this->assertTrue('array', $card);
+        $this->assertArrayHasKey('id', $card);
+        $this->assertArrayHasKey('name', $card);
+        $this->assertTrue($card['name'] === 'Test Title - ' . $date);
     }
 }
