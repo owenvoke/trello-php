@@ -24,7 +24,11 @@ We accept contributions via Pull Requests on [Github](https://github.com/pxgamer
 
 ## Running Tests
 
+Testing requires a [Trello API key](https://trello.com/app-key) in order to access my public boards.
+
 ``` bash
+$ export TRELLO_API_KEY=
+$ export TRELLO_ACCESS_TOKEN=
 $ composer test
 ```
 

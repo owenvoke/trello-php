@@ -12,8 +12,6 @@ A simple PHP wrapper for utilising the [Trello](https://developers.trello.com) a
 ## Structure
 
 ```
-bin/        
-config/
 src/
 tests/
 vendor/
@@ -73,7 +71,11 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Testing
 
+Testing requires a [Trello API key](https://trello.com/app-key) in order to access my public boards.
+
 ``` bash
+$ export TRELLO_API_KEY=
+$ export TRELLO_ACCESS_TOKEN=
 $ composer test
 ```
 
