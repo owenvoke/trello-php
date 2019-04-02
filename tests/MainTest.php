@@ -1,12 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace pxgamer\Trello;
 
 use PHPUnit\Framework\TestCase;
 
 class MainTest extends TestCase
 {
-    public function testCanGetBoardsByUser()
+    /** @test */
+    public function canGetBoardsByUser(): void
     {
         $trello = new Client(
             getenv('TRELLO_API_KEY'),
@@ -15,10 +18,11 @@ class MainTest extends TestCase
 
         $boards = $trello->getBoardsByUser('owenvoke');
 
-        $this->assertTrue(count($boards) === 2);
+        $this->assertCount(2, $boards);
     }
 
-    public function testCanGetListsFromBoard()
+    /** @test */
+    public function canGetListsFromBoard(): void
     {
         $trello = new Client(
             getenv('TRELLO_API_KEY'),
@@ -27,10 +31,11 @@ class MainTest extends TestCase
 
         $lists = $trello->getListsFromBoard('5a03881875400b8f73bd83f0');
 
-        $this->assertTrue(count($lists) === 1);
+        $this->assertCount(1, $lists);
     }
 
-    public function testCanGetCardsFromList()
+    /** @test */
+    public function canGetCardsFromList(): void
     {
         $trello = new Client(
             getenv('TRELLO_API_KEY'),
@@ -39,10 +44,11 @@ class MainTest extends TestCase
 
         $cards = $trello->getCardsFromList('5a038add68bc5bb0c45c5eb0');
 
-        $this->assertTrue(count($cards) === 1);
+        $this->assertCount(1, $cards);
     }
 
-    public function testCanGetCard()
+    /** @test */
+    public function canGetCard(): void
     {
         $trello = new Client(
             getenv('TRELLO_API_KEY'),
@@ -52,11 +58,12 @@ class MainTest extends TestCase
         $card = $trello->getCard('5a038ae9d73035b7e59f283c');
 
         $this->assertArrayHasKey('id', $card);
-        $this->assertTrue($card['id'] === '5a038ae9d73035b7e59f283c');
-        $this->assertTrue($card['desc'] === '');
+        $this->assertSame('5a038ae9d73035b7e59f283c', $card['id']);
+        $this->assertEmpty($card['desc']);
     }
 
-    public function testCanAddCard()
+    /** @test */
+    public function canAddCard(): void
     {
         $trello = new Client(
             getenv('TRELLO_API_KEY'),
@@ -65,16 +72,16 @@ class MainTest extends TestCase
 
         $date = date('Y-m-d');
         $card = $trello->addCard([
-            'name'   => 'Test Title - ' . $date,
-            'desc'   => 'Test Description...',
+            'name' => 'Test Title - '.$date,
+            'desc' => 'Test Description...',
             'idList' => '5a038d1968274350f8b4ba6e',
-            'pos'    => 'top',
-            'due'    => $date,
+            'pos' => 'top',
+            'due' => $date,
         ]);
 
-        $this->assertInternalType('array', $card);
+        $this->assertIsArray($card);
         $this->assertArrayHasKey('id', $card);
         $this->assertArrayHasKey('name', $card);
-        $this->assertTrue($card['name'] === 'Test Title - ' . $date);
+        $this->assertEquals('Test Title - '.$date, $card['name']);
     }
 }
