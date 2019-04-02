@@ -16,63 +16,58 @@ class Client
     public const BASE_URL = 'https://api.trello.com/';
     public const API_VERSION = 1;
 
-    public $access_token;
-    private $api_url;
-    private $api_key;
+    /** @var string */
+    public $accessToken;
+    /** @var string */
+    private $apiUrl;
+    /** @var string */
+    private $apiKey;
 
-    public function __construct($api_key, $access_token)
+    public function __construct(string $apiKey, string $accessToken)
     {
-        if (!$this->api_key) {
-            $this->api_key = $api_key;
-        }
-
-        if (!$this->access_token) {
-            $this->access_token = $access_token;
-        }
-
-        if (!$this->api_url) {
-            $this->api_url = self::BASE_URL.self::API_VERSION;
-        }
+        $this->apiUrl = self::BASE_URL.self::API_VERSION;
+        $this->apiKey = $apiKey;
+        $this->accessToken = $accessToken;
     }
 
-    public function getBoardsByUser($username)
+    public function getBoardsByUser($username): array
     {
         return $this->get("/members/$username/boards");
     }
 
-    public function getListsFromBoard($board_id)
+    public function getListsFromBoard($boardId): array
     {
-        return $this->get("/boards/$board_id/lists");
+        return $this->get("/boards/$boardId/lists");
     }
 
-    public function getCardsFromList($list_id)
+    public function getCardsFromList($listId): array
     {
-        return $this->get("/lists/$list_id/cards");
+        return $this->get("/lists/$listId/cards");
     }
 
-    public function getCard($card_id)
+    public function getCard($cardId): array
     {
-        return $this->get("/cards/$card_id");
+        return $this->get("/cards/$cardId");
     }
 
-    public function addCard($content)
+    public function addCard($content): array
     {
         return $this->post('/cards', $content);
     }
 
-    private function get($endpoint)
+    private function get(string $endpoint): array
     {
         $cu = curl_init();
         curl_setopt_array(
             $cu,
             [
-                CURLOPT_URL => $this->api_url
+                CURLOPT_URL => $this->apiUrl
                     .$endpoint
                     .((strpos($endpoint, '?') > -1) ? '&' : '?')
                     .'key='
-                    .$this->api_key
+                    .$this->apiKey
                     .'&token='
-                    .$this->access_token,
+                    .$this->accessToken,
                 CURLOPT_RETURNTRANSFER => true,
             ]
         );
@@ -80,19 +75,19 @@ class Client
         return $this->toArray(curl_exec($cu));
     }
 
-    public function post($endpoint, $content)
+    public function post(string $endpoint, array $content): array
     {
         $cu = curl_init();
         curl_setopt_array(
             $cu,
             [
-                CURLOPT_URL => $this->api_url
+                CURLOPT_URL => $this->apiUrl
                     .$endpoint
                     .((strpos($endpoint, '?') > -1) ? '&' : '?')
                     .'key='
-                    .$this->api_key
+                    .$this->apiKey
                     .'&token='
-                    .$this->access_token,
+                    .$this->accessToken,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POST => true,
                 CURLOPT_POSTFIELDS => $content,
@@ -102,7 +97,7 @@ class Client
         return $this->toArray(curl_exec($cu));
     }
 
-    private function toArray($string)
+    private function toArray(string $string): array
     {
         return is_string($string) ? json_decode($string, true) : [];
     }
