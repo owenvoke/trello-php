@@ -18,7 +18,7 @@ class MainTest extends TestCase
 
         $boards = $trello->getBoardsByUser('owenvoke');
 
-        $this->assertCount(2, $boards);
+        $this->assertGreaterThan(0, count($boards));
     }
 
     /** @test */
@@ -29,9 +29,9 @@ class MainTest extends TestCase
             getenv('TRELLO_ACCESS_TOKEN')
         );
 
-        $lists = $trello->getListsFromBoard('5a03881875400b8f73bd83f0');
+        $lists = $trello->getListsFromBoard('560e52c0d17f79e1e931d8db');
 
-        $this->assertCount(1, $lists);
+        $this->assertGreaterThan(0, count($lists));
     }
 
     /** @test */
@@ -42,9 +42,9 @@ class MainTest extends TestCase
             getenv('TRELLO_ACCESS_TOKEN')
         );
 
-        $cards = $trello->getCardsFromList('5a038add68bc5bb0c45c5eb0');
+        $cards = $trello->getCardsFromList('560e52c0d17f79e1e931d8db');
 
-        $this->assertCount(1, $cards);
+        $this->assertGreaterThan(0, count($cards));
     }
 
     /** @test */
@@ -55,10 +55,10 @@ class MainTest extends TestCase
             getenv('TRELLO_ACCESS_TOKEN')
         );
 
-        $card = $trello->getCard('5a038ae9d73035b7e59f283c');
+        $card = $trello->getCard('560e52c1d17f79e1e931d8f6');
 
         $this->assertArrayHasKey('id', $card);
-        $this->assertSame('5a038ae9d73035b7e59f283c', $card['id']);
+        $this->assertSame('560e52c1d17f79e1e931d8f6', $card['id']);
         $this->assertEmpty($card['desc']);
     }
 
