@@ -3,6 +3,7 @@
     "type": "library",
     "description": "A simple PHP wrapper for utilising the Trello api.",
     "license": "MIT",
+    "abandoned": "stevenmaguire/trello-php",
     "require": {
         "php": "^7.1",
         "ext-curl": "*"
