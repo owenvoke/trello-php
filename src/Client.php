@@ -30,27 +30,27 @@ class Client
         $this->accessToken = $accessToken;
     }
 
-    public function getBoardsByUser($username): array
+    public function getBoardsByUser(string $username): array
     {
         return $this->get("/members/$username/boards");
     }
 
-    public function getListsFromBoard($boardId): array
+    public function getListsFromBoard(string $boardId): array
     {
         return $this->get("/boards/$boardId/lists");
     }
 
-    public function getCardsFromList($listId): array
+    public function getCardsFromList(string $listId): array
     {
         return $this->get("/lists/$listId/cards");
     }
 
-    public function getCard($cardId): array
+    public function getCard(string $cardId): array
     {
         return $this->get("/cards/$cardId");
     }
 
-    public function addCard($content): array
+    public function addCard(array $content): array
     {
         return $this->post('/cards', $content);
     }
