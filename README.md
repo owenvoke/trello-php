@@ -9,19 +9,11 @@
 
 A simple PHP wrapper for utilising the [Trello](https://developers.trello.com) api.
 
-## Structure
-
-```
-src/
-tests/
-vendor/
-```
-
 ## Install
 
 Via Composer
 
-``` bash
+```bash
 $ composer require pxgamer/trello-php
 ```
 
@@ -73,7 +65,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 Testing requires a [Trello API key](https://trello.com/app-key) in order to access my public boards.
 
-``` bash
+```bash
 $ export TRELLO_API_KEY=
 $ export TRELLO_ACCESS_TOKEN=
 $ composer test
@@ -81,11 +73,11 @@ $ composer test
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for details.
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) and [CODE_OF_CONDUCT](.github/CODE_OF_CONDUCT.md) for details.
 
 ## Security
 
-If you discover any security related issues, please email owzie123@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please email security@pxgamer.xyz instead of using the issue tracker.
 
 ## Credits
 
