@@ -1,11 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace pxgamer\Trello;
+
+use function curl_exec;
+use function curl_init;
+use function curl_setopt_array;
+use function is_string;
+use function json_decode;
+use function strpos;
 
 class Client
 {
-    const BASE_URL = 'https://api.trello.com/';
-    const API_VERSION = 1;
+    public const BASE_URL = 'https://api.trello.com/';
+    public const API_VERSION = 1;
 
     public $access_token;
     private $api_url;
@@ -16,11 +25,13 @@ class Client
         if (!$this->api_key) {
             $this->api_key = $api_key;
         }
+
         if (!$this->access_token) {
             $this->access_token = $access_token;
         }
+
         if (!$this->api_url) {
-            $this->api_url = self::BASE_URL . self::API_VERSION;
+            $this->api_url = self::BASE_URL.self::API_VERSION;
         }
     }
 
@@ -55,13 +66,13 @@ class Client
         curl_setopt_array(
             $cu,
             [
-                CURLOPT_URL            => $this->api_url
-                    . $endpoint
-                    . ((strpos($endpoint, '?') > -1) ? '&' : '?')
-                    . 'key='
-                    . $this->api_key
-                    . '&token='
-                    . $this->access_token,
+                CURLOPT_URL => $this->api_url
+                    .$endpoint
+                    .((strpos($endpoint, '?') > -1) ? '&' : '?')
+                    .'key='
+                    .$this->api_key
+                    .'&token='
+                    .$this->access_token,
                 CURLOPT_RETURNTRANSFER => true,
             ]
         );
@@ -75,16 +86,16 @@ class Client
         curl_setopt_array(
             $cu,
             [
-                CURLOPT_URL            => $this->api_url
-                    . $endpoint
-                    . ((strpos($endpoint, '?') > -1) ? '&' : '?')
-                    . 'key='
-                    . $this->api_key
-                    . '&token='
-                    . $this->access_token,
+                CURLOPT_URL => $this->api_url
+                    .$endpoint
+                    .((strpos($endpoint, '?') > -1) ? '&' : '?')
+                    .'key='
+                    .$this->api_key
+                    .'&token='
+                    .$this->access_token,
                 CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_POST           => true,
-                CURLOPT_POSTFIELDS     => $content,
+                CURLOPT_POST => true,
+                CURLOPT_POSTFIELDS => $content,
             ]
         );
 
@@ -93,10 +104,6 @@ class Client
 
     private function toArray($string)
     {
-        if (is_string($string)) {
-            return json_decode($string, true);
-        } else {
-            return [];
-        }
+        return is_string($string) ? json_decode($string, true) : [];
     }
 }
