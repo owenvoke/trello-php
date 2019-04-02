@@ -2,7 +2,7 @@
 
 All notable changes to `trello-php` will be documented in this file.
 
-Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
+Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com) principles.
 
 ## v1.2.0 - 2017-11-08
 
